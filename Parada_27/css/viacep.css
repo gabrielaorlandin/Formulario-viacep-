@@ -1,0 +1,39 @@
+function buscarEnderecoPorCEP(cep) {
+  const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+  return fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      if (data.erro) {
+        throw new Error('CEP não encontrado');
+      }
+
+      const endereco = {
+        rua: data.logradouro,
+        bairro: data.bairro,
+        cidade: data.localidade,
+        estado: data.uf
+      };
+
+      return endereco;
+    });
+    function buscarEnderecoPorCEP(cep) {
+      const url = `https://viacep.com.br/ws/${cep}/json/`;
+    
+      return fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.erro) {
+            throw new Error('CEP não encontrado');
+          }
+    
+          const endereco = {
+            rua: data.logradouro,
+            bairro: data.bairro,
+            cidade: data.localidade,
+            estado: data.uf
+          };
+    
+          return endereco;
+        });
+    }
